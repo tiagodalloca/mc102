@@ -1,2 +1,2 @@
 # mc102
-My lab exercises of the discipline MC102
+My lab exercises from MC102 course
