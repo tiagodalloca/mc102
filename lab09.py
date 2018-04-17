@@ -1,37 +1,33 @@
 # RA 206341
 
+# o role aqui eh loco e nois vai estorar essa bolsa
+# recebe valores de ações e cospe o caminho para a riqueza
+
 import itertools
 
 
-def calc_profit(movements, values):
-    profit = 0
-    for day, vals in enumerate(movements):
-        if vals[0] >= 0:
-            profit -= values[vals[0]][day]
-        if vals[1] >= 0:
-            profit += values[vals[1]][day]
-    return profit
-
-
-def valid_comb(comb):
+def valid_comb(comb, values):
     current_company = -1
     sold_companies = []
-    for day in comb:
+    profit = 0
+    for i, day in enumerate(comb):
         if day[1] != -1:
             if current_company == -1 or current_company != day[1]:
-                return False
+                return (False, -1)
             if day[1] == current_company:
                 current_company = -1
                 sold_companies.append(day[1])
+                profit += values[day[1]][i]
         if current_company == -1:
             if day[0] != -1:
                 if day[0] not in sold_companies:
                     current_company = day[0]
+                    profit -= values[day[0]][i]
                 else:
-                    return False
+                    return (False, -1)
         elif day[0] != -1:
-            return False
-    return True
+            return (False, -1)
+    return (True, profit)
 
 
 # valores das ações para cada dia
@@ -46,20 +42,19 @@ for j in range(4):
 
 perms = list(itertools.permutations(range(-1, 4), 2))
 perms.append((-1, -1))
-combinations = itertools.product(perms, repeat=d)
-filtered_combs = []
-for comb in combinations:
-    if valid_comb(comb):
-        filtered_combs.append(comb)
-
+# combinations = itertools.product(perms, repeat=d) melhorado
+combinations = [[]]
+for p_perm in [perms] * d:
+    combinations = (x + [y] for x in combinations for y in p_perm
+                    if len(x) == 0 or valid_comb(x, values)[0])
 
 # capitalismo HUAHUAHUAHUA
 max_profit = 0
 max_profit_comb = [[-1, -1]] * d
-for comb in filtered_combs:
-    profit = calc_profit(comb, values)
-    if profit > max_profit:
-        max_profit = profit
+for comb in combinations:
+    (_, p) = valid_comb(comb, values)
+    if p > max_profit:
+        max_profit = p
         max_profit_comb = comb
 
 c = [-1]*4
