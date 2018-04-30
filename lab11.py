@@ -9,9 +9,9 @@ from copy import deepcopy
 
 def surrounding(i, j, madriz):
     return [madriz[i + ni][j + nj] for (ni, nj) in [
-                [-1, -1], [-1, 0], [-1, 1],
-                [0, -1],           [0, 1],
-                [1, -1],  [1, 0],  [1, 1]]]
+        [-1, -1], [-1, 0], [-1, 1],
+        [0, -1], [0, 1],
+        [1, -1], [1, 0], [1, 1]]]
 
 
 def nxtx(i, j, madriz):

@@ -1,8 +1,17 @@
 # RA 206341
 
-# O jogo Street Fighter foi um dos primeiros jogos eletrônicos do gênero conhecido como jogos de luta. Neste jogo, um mestre de artes marciais, chamado Ryu, enfrenta outros lutadores em um torneio internacional de artes marciais. Cada combate entre Ryu e um oponente se dá em dois rounds. O objetivo é atacar o oponente com diferentes golpes, sendo que cada golpe aplicado subtrai uma certa quantidade de pontos de vida do outro combatente. Perde o round aquele jogador cujos pontos de vida ficar menor ou igual a zero primeiro. Vence a luta quem ganhar o maior número de rounds.
+# O jogo Street Fighter foi um dos primeiros jogos eletrônicos do gênero
+# conhecido como jogos de luta. Neste jogo, um mestre de artes marciais,
+# chamado Ryu, enfrenta outros lutadores em um torneio internacional de
+# artes marciais. Cada combate entre Ryu e um oponente se dá em dois
+# rounds. O objetivo é atacar o oponente com diferentes golpes, sendo que
+# cada golpe aplicado subtrai uma certa quantidade de pontos de vida do
+# outro combatente. Perde o round aquele jogador cujos pontos de vida
+# ficar menor ou igual a zero primeiro. Vence a luta quem ganhar o maior
+# número de rounds.
 
 # o código é autoexplicativo
+
 
 def read_int():
     return int(input())

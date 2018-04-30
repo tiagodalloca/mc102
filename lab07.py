@@ -5,7 +5,7 @@
 
 
 def divisors(n):
-    for i in range(1, int(n/2) + 2):
+    for i in range(1, int(n / 2) + 2):
         if n % i == 0:
             yield i
     yield n
@@ -14,8 +14,8 @@ def divisors(n):
 n = int(input())
 c = 0
 
-for i in range(1, n+1):
-    for j in range(1, n+1):
+for i in range(1, n + 1):
+    for j in range(1, n + 1):
         if i in divisors(j) or j in divisors(i):
             print("*", end="")
             c += 1
