@@ -112,5 +112,5 @@ def atualiza_matriz(mat):
     for i in oslines:
         del mat[i]
     for _ in oslines:
-        mat.append([0]*len(mat[0]))
+        mat.append([0] * len(mat[0]))
     return len(oslines)
