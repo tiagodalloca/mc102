@@ -4,7 +4,7 @@
 
 ins = input().split(" ")
 ras = []
-ras = list(map(int, filter((lambda x:  x != ""), ins)))
+ras = list(map(int, filter((lambda x: x != ""), ins)))
 o = 0
 
 while(True):
@@ -28,7 +28,7 @@ while(True):
         elif o == 1:
             i, f = (0, len(ras) - 1)
             while i <= f:
-                m = (i + f)//2
+                m = (i + f) // 2
                 ll.append(m)
                 if ras[m] == b:
                     break
@@ -45,7 +45,7 @@ while(True):
         else:
             i, f = (0, len(ras) - 1)
             while i <= f:
-                m = (i + f)//2
+                m = (i + f) // 2
                 ll.append(m)
                 if ras[m] == b:
                     break
