@@ -12,6 +12,7 @@ import copy
 # remover as chamadas para submissao.
 from lab20_main import print_sudoku
 
+
 def isvalido(resposta):
     resposta = copy.deepcopy(resposta)
     for i in range(9):
@@ -24,11 +25,13 @@ def isvalido(resposta):
         rs = set(nu)
         if len(nu) != len(rs):
             return False
-    return True 
+    return True
 
 # Funcao: resolve
 # Resolve o Sudoku da matriz resposta.
 # Retorna True se encontrar uma resposta, False caso contrario
+
+
 def resolve(resposta):
     if not isvalido(resposta):
         return False

@@ -3,6 +3,7 @@
 # programa para achar hierarquias
 # yay
 
+
 def acha_subordinados(k, m):
     l = []
     for (i, f) in enumerate(m[k]):
