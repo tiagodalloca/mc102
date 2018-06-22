@@ -153,7 +153,7 @@ def _print_sudoku(resposta):
 def print_sudoku(resposta):
     if enable_colors():
         _print_sudoku(resposta)
-        time.sleep(0.1)
+        time.sleep(0.001)
 
 
 # Importa funcoes implementadas pelo aluno

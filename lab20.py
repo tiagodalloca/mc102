@@ -12,20 +12,22 @@ import copy
 # remover as chamadas para submissao.
 from lab20_main import print_sudoku
 
+boxes = [
+    [1, 1, 1, 2, 2, 2, 3, 3, 3],
+    [1, 1, 1, 2, 2, 2, 3, 3, 3],
+    [1, 1, 1, 2, 2, 2, 3, 3, 3],
+    [4, 4, 4, 5, 5, 5, 6, 6, 6],
+    [4, 4, 4, 5, 5, 5, 6, 6, 6],
+    [4, 4, 4, 5, 5, 5, 6, 6, 6],
+    [7, 7, 7, 8, 8, 8, 9, 9, 9],
+    [7, 7, 7, 8, 8, 8, 9, 9, 9],
+    [7, 7, 7, 8, 8, 8, 9, 9, 9]
+]
 
-def isvalido(resposta):
-    resposta = copy.deepcopy(resposta)
-    for i in range(9):
-        nu = list(filter((0).__ne__, resposta[i]))
-        rs = set(nu)
-        if len(nu) != len(rs):
-            return False
-    for i in range(9):
-        nu = [resposta[j][i] for j in range(9) if resposta[j][i] != 0]
-        rs = set(nu)
-        if len(nu) != len(rs):
-            return False
-    return True
+
+def n_of_box(i, j):
+    x = boxes[i][j]
+    return [[n, m] for n in range(9) for m in range(9) if boxes[n][m] == x]
 
 # Funcao: resolve
 # Resolve o Sudoku da matriz resposta.
@@ -33,16 +35,21 @@ def isvalido(resposta):
 
 
 def resolve(resposta):
-    if not isvalido(resposta):
-        return False
-    print_sudoku(resposta)
+    # print_sudoku(resposta)
     for i in range(9):
         for j in range(9):
             if resposta[i][j] == 0:
-                for k in range(1, 9):
+                ok = [n for n in range(1, 10)
+                      if (n not in [resposta[l][j] for l in range(9)])
+                      and n not in resposta[i]
+                      and n not in [resposta[t][v]
+                                    for (t, v) in n_of_box(i, j)]]
+                for k in ok:
                     resposta[i][j] = k
                     nu = copy.deepcopy(resposta)
                     if (resolve(nu)):
                         for l in range(9):
                             resposta[l] = nu[l]
                         return True
+                return False
+    return True
